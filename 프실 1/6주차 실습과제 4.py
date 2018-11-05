@@ -1,0 +1,17 @@
+from tkinter import *
+
+root = Tk()
+root.title("로그인")
+lb1 = Label(root,text="아이디")
+lb2 = Label(root,text="비밀번호")
+lb1.grid(row=0,column=0)
+lb2.grid(row=1,column=0)
+ent1 = Entry(root)
+ent2 = Entry(root)
+ent1.grid(row = 0,column=1)
+ent2.grid(row=1,column=1)
+btn1 = Button(root,text="확인")
+btn2 = Button(root,text="취소")
+btn1.grid(row=2,column=3)
+btn2.grid(row=2,column=4)
+root.mainloop()
