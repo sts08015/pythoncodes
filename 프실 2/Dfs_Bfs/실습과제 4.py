@@ -37,7 +37,11 @@ while len(queue)>0:
         a = cur[0] + dx[i]; b = cur[1] + dy[i]
         #print("hee")
         if safe(a,b) and not visit[a][b] and M[a][b] == '.':
-            visit[a][b] = visit[cur[0]][cur[1]] +1
+            #print(visit[a][b],visit[cur[0]][cur[1]])
+            if visit[a][b]!=0:
+                visit[a][b] = min(visit[a][b],visit[cur[0]][cur[1]] +1)
+            else:
+                visit[a][b] = visit[cur[0]][cur[1]] +1
             #print(visit[a][b])
             queue.append((a,b))
 
