@@ -20,7 +20,10 @@ def initCell():
 def nextGeneration():
     global cells
     temp = copy.deepcopy(cells)
-
+    for i in range(len(temp)):
+        for j in range(len(temp[0])):
+            temp[i][j].nb = 0
+            
     for i in range(len(temp)):
         for j in range(len(temp[0])):
             for x in range(9):
@@ -48,16 +51,25 @@ def lifeGamePlay():
                 sys.exit()
             if event.type == MOUSEBUTTONDOWN and event.button == 1:
                 nextGeneration()
+                for i in range(len(cells)):
+                    for j in range(len(cells[0])):
+                        if cells[i][j].state == 0:
+                            if cells[i][j].nb == 3:
+                                cells[i][j].state = 1
+                        else:
+                            if not(cells[i][j].nb == 2 or cells[i][j].nb == 3):
+                                cells[i][j].state = 0
                     
+        
         for i in range(len(cells)):
             for j in range(len(cells[0])):
                 if cells[i][j].state:
-                    
                     pygame.draw.rect(screen,RED,(j*width/5,i*height/5,width/5-1,height/5-1))
                 else:
                     pygame.draw.rect(screen,GRAY,(j*width/5,i*height/5,width/5-1,height/5-1))
-                    
         pygame.display.flip()
+
+
 
 cells = []
 initCell()
